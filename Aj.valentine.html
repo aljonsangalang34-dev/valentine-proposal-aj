@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fecfef, #ffecd2);
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #d63384;
+        }
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        #yes {
+            background-color: #28a745;
+            color: white;
+            transform: scale(1);
+        }
+        #no {
+            background-color: #dc3545;
+            color: white;
+        }
+        #message {
+            display: none;
+            font-size: 1.5em;
+            margin-top: 20px;
+            color: #d63384;
+        }
+        #picture {
+            display: none;
+            margin-top: 20px;
+            max-width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <h1>Can you be my valentine?</h1>
+    <div class="buttons">
+        <button id="yes">Yes</button>
+        <button id="no">No</button>
+    </div>
+    <div id="message">
+        <p>Yay! You've made me the happiest person ever. Happy Valentine's Day, my love! 💖</p>
+    </div>
+    <img id="picture" src="your-picture.jpg" alt="Us together"> <!-- Replace 'your-picture.jpg' with your actual image file path -->
+
+    <script>
+        let yesScale = 1;
+        const yesButton = document.getElementById('yes');
+        const noButton = document.getElementById('no');
+        const message = document.getElementById('message');
+        const picture = document.getElementById('picture');
+
+        noButton.addEventListener('click', () => {
+            yesScale += 0.5; // Increase size by 50% each time
+            yesButton.style.transform = `scale(${yesScale})`;
+            if (yesScale > 5) { // If it gets too big, make it fill the screen
+                yesButton.style.position = 'absolute';
+                yesButton.style.top = '50%';
+                yesButton.style.left = '50%';
+                yesButton.style.transform = 'translate(-50%, -50%) scale(10)';
+                yesButton.style.zIndex = '10';
+            }
+        });
+
+        yesButton.addEventListener('click', () => {
+            // Hide buttons and show message + picture
+            document.querySelector('.buttons').style.display = 'none';
+            document.querySelector('h1').style.display = 'none';
+            message.style.display = 'block';
+            picture.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
